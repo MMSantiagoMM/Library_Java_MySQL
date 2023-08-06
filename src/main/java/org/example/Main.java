@@ -13,9 +13,7 @@ public class Main {
 
         ConnectionOne connectDB = new ConnectionOne();
 
-        try(Connection connect = connectDB.getConnection()){
-        }catch (SQLException e){
-            System.out.println(e);
-        }
+        connectDB.getConnection();
+
     }
 }
