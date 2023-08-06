@@ -10,10 +10,9 @@ public interface LibraryDAO {
        ConnectionOne dataBase = new ConnectionOne();
 
        try(Connection connection = dataBase.getConnection()){
-           PreparedStatement ps;
         try {
                String query = "INSERT INTO customer (id_doc,doc_type,name,lastName,email,program) VALUES(?,?,?,?,?,?)";
-               ps = connection.prepareStatement(query);
+               PreparedStatement ps = connection.prepareStatement(query);
                ps.setInt(1,cm.getId_doc());
                ps.setString(2,cm.getDoc_type());
                ps.setString(3,cm.getName());
@@ -22,8 +21,8 @@ public interface LibraryDAO {
                ps.setString(6,cm.getProgram());
                ps.executeUpdate();
             System.out.println("Registro exitoso");
-           }catch(SQLException exception){
-            System.out.println(exception);
+           }catch(SQLException e){
+            System.out.println(e);
         }
        }catch (SQLException e){
            System.out.println(e);
